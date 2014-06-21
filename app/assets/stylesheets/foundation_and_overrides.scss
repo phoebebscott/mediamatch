@@ -21,6 +21,10 @@ img {margin-top: 5px; margin-left: 10px}
 
 .top-bar-section li.active:not(.has-form) a:not(.button):hover{background-color: transparent}
 
+.thumb{height: 50px; width: 50px}
+
+#search_rating{text-align:center}
+#search_bookmark{text-align:center}
 
 // $experimental: true;
 
@@ -924,7 +928,7 @@ $body-font-family: "Avenir Next", "Helvetica Neue", "Helvetica", Helvetica, Aria
 // $reveal-overlay-bg-old: #000;
 
 // We use these to control the style of the modal itself.
-// $reveal-modal-bg: #fff;
+$reveal-modal-bg: rgba(255,255,255, .7);
 // $reveal-position-top: rem-calc(100);
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: rem-calc(20);
