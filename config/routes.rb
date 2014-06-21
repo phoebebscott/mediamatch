@@ -1,5 +1,7 @@
 Mediamatch::Application.routes.draw do
-  resource :search, :controller => "search"
+resources :movies
+resources :ratings
+resources :users
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
@@ -10,7 +12,7 @@ Mediamatch::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'search#show'
+  root 'movies#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

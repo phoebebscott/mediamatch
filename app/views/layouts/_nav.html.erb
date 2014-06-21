@@ -18,34 +18,25 @@
           <li href="#" data-reveal-id="myModal"><img src="http://i.imgur.com/bms9mE0.png"/></li>
           <div id="myModal" class="reveal-modal" data-reveal>
             <h2>Movie Search</h2>
-            <%= form_tag search_path, :method => 'get' do %>
-            <%= text_field_tag :movie, params[:movie] %>
-            <%= submit_tag "Search", :name => nil %>
-            <% end %>
-              <br>
-              <hr>
-              <br>
-              <h2><%= @movie['title'] %></h2>
-              <%= image_tag @movie['posters']['profile'] %>
-              <br>
-              <% @movie.each do | key, value | %>
-                <% if value.is_a?(Hash) %>
-                  <% # Iterate through nested hash %>
-                  <ul>
-                  <% value.each do | key, value | %>
-                    <li><strong><%= "#{key}: " %></strong>
-                    <%= value %></li>
-                  <% end %>
-                <% else %>
-                  <% # If it's not a nested hash, just output key and value %>
-                  <strong><%= "#{key}: " %></strong>
-                  <%= value %><br>
-                <% end %>
-              <% end %>
-              <a class="close-reveal-modal">&#215;</a>
+            <input type="text" placeholder="Find a movie" ng-model="movieSearch">
+            <button ng-click="search(movieSearch)" class="button radius tiny">Go</button><br/>
+            <br>
+            <hr>
+            <div id="search_bookmark">
+            <img class="thumb" src="http://i.imgur.com/JQXKilp.png"/>
+            </div>
+            <br>
+            <div id="search_rating">
+            <img class="thumb" src="http://i.imgur.com/2rfIZNx.png"/>
+            {{movie.poster}}
+            <img class="thumb" src="http://i.imgur.com/OFWYBsj.png"/>
+            </div>
+            <br>
 
-
+            <a class="close-reveal-modal">&#215;</a>
           </div>
+
+      </div>
 
         <li class="top-bar-icon"></li>
           <li class="has-dropdown">
