@@ -21,6 +21,14 @@ img {margin-top: 5px; margin-left: 10px}
 
 .top-bar-section li.active:not(.has-form) a:not(.button):hover{background-color: transparent}
 
+#searchRating {text-align: center}
+
+.ratingIcon {max-height: 50px}
+
+#searchSave {text-align: center; & img {max-height: 50px}}
+
+#searchPoster {height: 100px}
+
 
 // $experimental: true;
 
@@ -924,7 +932,7 @@ $body-font-family: "Avenir Next", "Helvetica Neue", "Helvetica", Helvetica, Aria
 // $reveal-overlay-bg-old: #000;
 
 // We use these to control the style of the modal itself.
-// $reveal-modal-bg: #fff;
+$reveal-modal-bg: rgba(255,255,255,.6);
 // $reveal-position-top: rem-calc(100);
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: rem-calc(20);

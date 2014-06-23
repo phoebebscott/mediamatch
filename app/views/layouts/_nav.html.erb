@@ -15,8 +15,8 @@
 
         <% if current_user %>
           Welcome <strong><%= current_user.name %></strong>
-          <li href="#" data-reveal-id="myModal"><img src="http://i.imgur.com/bms9mE0.png"/></li>
-          <div id="myModal" class="reveal-modal" data-reveal>
+          <li href="#" data-reveal-id="searchModal"><img src="http://i.imgur.com/bms9mE0.png"/></li>
+          <div id="searchModal" class="reveal-modal" data-reveal>
             <h2>Movie Search</h2>
             <%= form_tag search_path, :method => 'get' do %>
             <%= text_field_tag :movie, params[:movie] %>
@@ -24,24 +24,13 @@
             <% end %>
               <br>
               <hr>
+              <div id="searchSave"><img src="http://i.imgur.com/g6r02iE.png"/></div>
               <br>
-              <h2><%= @movie['title'] %></h2>
+              <div id="searchRating">
+              <img class="ratingIcon" src="http://i.imgur.com/UYkbfy0.png"/>
               <%= image_tag @movie['posters']['profile'] %>
-              <br>
-              <% @movie.each do | key, value | %>
-                <% if value.is_a?(Hash) %>
-                  <% # Iterate through nested hash %>
-                  <ul>
-                  <% value.each do | key, value | %>
-                    <li><strong><%= "#{key}: " %></strong>
-                    <%= value %></li>
-                  <% end %>
-                <% else %>
-                  <% # If it's not a nested hash, just output key and value %>
-                  <strong><%= "#{key}: " %></strong>
-                  <%= value %><br>
-                <% end %>
-              <% end %>
+              <img class="ratingIcon" src="http://i.imgur.com/gkpKZVM.png"/>
+              </div>
               <a class="close-reveal-modal">&#215;</a>
 
 

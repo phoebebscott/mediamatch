@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+  has_many :ratings
+  has_many :movies, through: :ratings
+
+
 end
