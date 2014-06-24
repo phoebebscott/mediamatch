@@ -24,13 +24,15 @@
             <% end %>
               <br>
               <hr>
-              <div id="searchSave"><img src="http://i.imgur.com/g6r02iE.png"/></div>
+              <%= form_for [@movie] do |f| %>
+              <div id="searchSave"><%= submit_tag "saveRating", :value => 0 %><img src="http://i.imgur.com/g6r02iE.png"/></div>
               <br>
               <div id="searchRating">
-              <img class="ratingIcon" src="http://i.imgur.com/UYkbfy0.png"/>
-              <%= image_tag @movie['posters']['profile'] %>
-              <img class="ratingIcon" src="http://i.imgur.com/gkpKZVM.png"/>
+              <%= submit_tag "upRating", :value => 1 %><img class="ratingIcon" src="http://i.imgur.com/UYkbfy0.png"/>
+              <%= image_tag @movie.poster %>
+              <%= submit_tag "downRating", :value => -1 %><img class="ratingIcon" src="http://i.imgur.com/gkpKZVM.png"/>
               </div>
+              <% end %>
               <a class="close-reveal-modal">&#215;</a>
 
 

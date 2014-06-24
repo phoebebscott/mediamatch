@@ -1,5 +1,10 @@
 Mediamatch::Application.routes.draw do
   resource :search, :controller => "search"
+  resources :movies do
+    resources :ratings
+  end
+  resources :users
+
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

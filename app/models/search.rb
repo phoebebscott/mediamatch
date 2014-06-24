@@ -17,6 +17,14 @@ class Search
 
     response = HTTParty.get movie_url, auth
 
+    p response
+    movie = Movie.find_or_create_by(
+      rt_id: response['id'].to_s,
+      title: response['title'],
+      poster: response['posters']['profile'],
+    )
+
+    movie
   end
 end
 

@@ -27,7 +27,7 @@ mediamatchApp.factory('rating', ['$resource', function($resource) {
     {update: { method: 'PATCH'}});
 }]);
 
-mediamatchApp.controller('MovieCtrl', ['$scope', 'User', 'Movie', 'Rating', function($scope, Movie, Rating) {
+mediamatchApp.controller('MovieCtrl', ['$scope', 'User', 'Search', 'Movie', 'Rating', function($scope, Movie, Rating) {
   $scope.users= [];
   $scope.movies= [];
   $scope.ratings= [];
@@ -40,14 +40,14 @@ mediamatchApp.controller('MovieCtrl', ['$scope', 'User', 'Movie', 'Rating', func
    });
 
   Movie.query(function(movies) {
-    $scope.movies = movies;
-  });
+    $scope.movies = searchedmovies;
+  })
 
   Rating.query(function(ratings) {
     $scope.ratings = ratings;
   });
 
-    $scope.saveRating = function() {
+    $scope.saveRating = function(movie) {
       $scope.newRating.$save(function(rating) {
         console.log(rating);
         $scope.ratings.push(rating);
