@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   respond_to :json, :html
 
+# this makes it possible to filter ratings by type
+
   def index
     if params[:show_only]
       @movies = current_user.ratings.where(value: params[:show_only]).map{|r| r.movie}

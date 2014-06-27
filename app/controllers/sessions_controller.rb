@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+# This creates a new sessions when the user logsin with Facebook
    def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id

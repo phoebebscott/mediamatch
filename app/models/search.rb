@@ -1,5 +1,7 @@
 class Search
 
+# This is the call to Rotten Tomatoes to return a searched movie
+
   def self.party(movie)
     movie ||= "matrix"
 
@@ -19,6 +21,9 @@ class Search
     response = HTTParty.get movie_url, auth
 
     p response
+
+#If the movie is not in the database, it will be saved.
+# If the movie is already in the dababase, it won't be saved again.
     movie = Movie.find_or_create_by(
       rt_id: response['id'].to_s,
       title: response['title'],
