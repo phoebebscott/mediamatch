@@ -22,7 +22,7 @@ class Search
     movie = Movie.find_or_create_by(
       rt_id: response['id'].to_s,
       title: response['title'],
-      poster: response['posters']['profile'],
+      poster: response['posters']['original'],
     )
 
     movie
