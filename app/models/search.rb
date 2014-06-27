@@ -11,6 +11,7 @@ class Search
     response = HTTParty.get search_url, auth
 
     auth = { query: { apikey: 'ba6a69g94k428ceab9kazh3d' }}
+    p response["movies"]
     id = response["movies"][0]["id"]
     # id = '770672122'
     movie_url = "http://api.rottentomatoes.com/api/public/v1.0/movies/#{id}.json"

@@ -12,24 +12,36 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
-a img {height: 40px}
-img {margin-top: 5px; margin-left: 10px}
+body {
+  background-image: url("http://i.imgur.com/dLgcsom.jpg?1");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a img {margin-top: 0px}
+img {margin-top: 20px; margin-left: 20px; margin-right: 20px}
 
 #sign_in{background-color: #3B5998}
 
-#user-widget{color: white; margin-top: 0px; max-height: 45px}
+#user-widget{color: white; margin-top: 0px; max-height: 45px;}
 
 .top-bar-section li.active:not(.has-form) a:not(.button):hover{background-color: transparent}
 
-#searchRating {text-align: center}
+input[type="submit"] {
+-webkit-appearance: none;
+height: 50px;
+width: 100px;
+background-color: #18DD89;
+color: white;
+font-family: "Avenir Next";
+font-size: 30px;
+border: none;
+margin-top: 20px;
+}
 
-.ratingIcon {max-height: 50px}
+#searchRating {text-align:center;}
 
-#searchSave {text-align: center; & img {max-height: 50px}}
-
-#searchPoster {height: 100px}
-
-
+#saveRating {text-align:center;}
 // $experimental: true;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -59,7 +71,7 @@ img {margin-top: 5px; margin-left: 10px}
 // Global
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: image;
 // $body-font-color: #222;
 $body-font-family: "Avenir Next", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;

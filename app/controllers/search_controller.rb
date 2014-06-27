@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def show
     @movie = Search.party(params[:movie])
+    @rating = @movie.ratings.build
   end
-
 
 end

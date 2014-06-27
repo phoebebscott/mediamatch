@@ -1,7 +1,7 @@
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#">MediaMatch</a></h1>
+      <h1><a href="/">MediaMatch</a></h1>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -15,35 +15,18 @@
 
         <% if current_user %>
           Welcome <strong><%= current_user.name %></strong>
-          <li href="#" data-reveal-id="searchModal"><img src="http://i.imgur.com/bms9mE0.png"/></li>
-          <div id="searchModal" class="reveal-modal" data-reveal>
-            <h2>Movie Search</h2>
-            <%= form_tag search_path, :method => 'get' do %>
-            <%= text_field_tag :movie, params[:movie] %>
-            <%= submit_tag "Search", :name => nil %>
-            <% end %>
-              <br>
-              <hr>
-              <%= form_for [@movie] do |f| %>
-              <div id="searchSave"><%= submit_tag "saveRating", :value => 0 %><img src="http://i.imgur.com/g6r02iE.png"/></div>
-              <br>
-              <div id="searchRating">
-              <%= submit_tag "upRating", :value => 1 %><img class="ratingIcon" src="http://i.imgur.com/UYkbfy0.png"/>
-              <%= image_tag @movie.poster %>
-              <%= submit_tag "downRating", :value => -1 %><img class="ratingIcon" src="http://i.imgur.com/gkpKZVM.png"/>
-              </div>
-              <% end %>
-              <a class="close-reveal-modal">&#215;</a>
-
-
-          </div>
+          <li><a href="/movies/new"><img src="http://i.imgur.com/bms9mE0.png"/></a></li>
 
         <li class="top-bar-icon"></li>
           <li class="has-dropdown">
             <a href="#"><img src="http://imgur.com/1AwQUsY.png"/></a>
             <ul class="dropdown">
-              <li><a href="#">My movies</a></li>
-              <li><%= link_to "Sign out", signout_path, id: "sign_out" %>
+              <li class="divider"></li>
+              <li><%= link_to "My Lauds", movies_path(show_only:1) %></li>
+              <li><%= link_to "My Bombs", movies_path(show_only:-1) %></li>
+              <li><%= link_to "My Saves", movies_path(show_only:0) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             </ul>
           </li>
         <% else %>
@@ -53,3 +36,5 @@
       </div></li>
 
     </ul>
+  </section>
+</nav>
