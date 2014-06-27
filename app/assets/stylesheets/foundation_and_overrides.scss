@@ -12,6 +12,12 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+body {
+  background-image: url("http://i.imgur.com/dLgcsom.jpg?1");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 a img {height: 40px}
 img {margin-top: 5px; margin-left: 10px}
 
@@ -23,11 +29,26 @@ img {margin-top: 5px; margin-left: 10px}
 
 #searchRating {text-align: center}
 
-.ratingIcon {max-height: 50px}
+#searchSave {
+  text-align: center;
+  background-image: url("http://i.imgur.com/g6r02iE.png");
+  background-repeat:no-repeat;
+  height: 50px
+ }
 
-#searchSave {text-align: center; & img {max-height: 50px}}
+#ratingContainer {
+  height: 80%;
+  width: 80%;
+  background-color: rgba (255,255,255, .6);
+}
 
-#searchPoster {height: 100px}
+.saveIcon {
+  background-image: url("http://i.imgur.com/UYkbfy0.png");
+  height: 50px;
+  width: 50px;
+}
+
+
 
 
 // $experimental: true;
@@ -59,7 +80,7 @@ img {margin-top: 5px; margin-left: 10px}
 // Global
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: image;
 // $body-font-color: #222;
 $body-font-family: "Avenir Next", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;

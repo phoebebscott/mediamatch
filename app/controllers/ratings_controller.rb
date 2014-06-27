@@ -3,19 +3,9 @@ class RatingsController < ApplicationController
   respond_to :json, :html
   before_filter :set_movie
 
-  def upindex
-    @upratings = Uprating.all
-    respond_with @upratings
-  end
-
-  def downindex
-    @downratings = Downrating.all
-    respond_with @downratings
-  end
-
-  def saveindex
-    @saveratings = Saverating.all
-    respond_with @saveratings
+  def index
+    @ratings = Rating.all
+    respond_with @ratings
   end
 
   def new
@@ -23,60 +13,46 @@ class RatingsController < ApplicationController
 
   def create
 
-    @uprate = Uprating.create(
-      user_id: current_user,
-      movie_id: @movie.id,
-      )
+    @rating = Rating.new(rating_params)
+    @rating.user = current_user
+    @rating.movie = @movie
 
-    @downrate - Downrating.create(
-      user_id: current_user,
-      movie_id: @movie.id,
-      )
-
-    @saverate - Saverating.create(
-      user_id: current_user,
-      movie_id: @movie.id,
-      )
-
-    if @uprate.save
+    if @rating.save
       respond_to do |format|
-          format.html
-          format.json { render json: @uprate, status: :created }
-        end
-      else
-        respond_to do |format|
-          format.html
-          format.json { render json: @uprate.errors, status: :unprocessable_entity }
-        end
+        format.html { redirect_to root_path }
+        format.json { render json: @rating, status: :created }
       end
-
-    if @downrate.save
+    else
       respond_to do |format|
-          format.html
-          format.json { render json: @downrate, status: :created }
-        end
-      else
-        respond_to do |format|
-          format.html
-          format.json { render json: @downrate.errors, status: :unprocessable_entity }
-        end
+        format.html { redirect_to root_path }
+        format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
+    end
 
-    if @saverate.save
-      respond_to do |format|
-          format.html
-          format.json { render json: @saverate, status: :created }
-        end
-      else
-        respond_to do |format|
-          format.html
-          format.json { render json: @saverate.errors, status: :unprocessable_entity }
-        end
-      end
   end
+
+  def update
+    if @rating.update(rating_params)
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json { render nothing: true, status: :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
+
   def set_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
+  end
+
+  def rating_params
+    params.require(:rating).permit(:value)
   end
 end
 
