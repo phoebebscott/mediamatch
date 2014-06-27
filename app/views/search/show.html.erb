@@ -1,11 +1,14 @@
+
 <% if @movie != nil %>
 <%= form_for [@movie] do |f| %>
-<%= image_submit_tag "saveRating", :value => 0, :class => "saveIcon" %>
+<div id="saveRating">
+<%= submit_tag "Rating", :value => 0 %>
+</div>
 <br>
 <div id="searchRating">
-<%= submit_tag "upRating", :value => 1, :class => "upIcon" %>
+<%= submit_tag "Rating", :value => 1 %>
 <%= image_tag @movie.poster %>
-<%= submit_tag "downRating", :value => -1 %><img class="ratingIcon" src="http://i.imgur.com/gkpKZVM.png"/>
+<%= submit_tag "Rating", :value => -1 %>
 </div>
 <% end %>
 <% else %>

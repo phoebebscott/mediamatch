@@ -31,20 +31,6 @@ class RatingsController < ApplicationController
 
   end
 
-  def update
-    if @rating.update(rating_params)
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.json { render nothing: true, status: :no_content }
-      end
-    else
-      respond_to do |format|
-        format.html
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   private
 
   def set_movie
