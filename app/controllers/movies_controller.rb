@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
   end
 
   def update
+    puts params[:id]
   end
 
   private

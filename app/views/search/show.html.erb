@@ -1,15 +1,25 @@
 <!-- This is where a user can see the search result and rate the movie - -1 for Bomb, 0 for Bookmark, and 1 for Laud -->
 <% if @movie != nil %>
-<%= form_for [@movie] do |f| %>
-<div id="saveRating">
-<%= submit_tag "Rating", :value => 0 %>
-</div>
-<br>
-<div id="searchRating">
-<%= submit_tag "Rating", :value => 1 %>
-<%= image_tag @movie.poster %>
-<%= submit_tag "Rating", :value => -1 %>
-</div>
-<% end %>
+
+  <div id="saveRating">
+    <%= form_for [@movie, @rating] do |f| %>
+    <%= f.hidden_field :value, :value => 0 %>
+    <%= submit_tag "Save" %>
+    <% end %>
+  </div>
+  <br>
+  <div id="searchRating">
+    <%= form_for [@movie, @rating] do |f| %>
+    <%= f.hidden_field :value, :value => 1 %>
+    <%= submit_tag "Laud" %>
+    <% end %>
+    <%= image_tag @movie.poster %>
+
+    <%= form_for [@movie, @rating] do |f| %>
+    <%= f.hidden_field :value, :value => -1 %>
+    <%= submit_tag "Bomb" %>
+    <% end %>
+  </div>
+
 <% else %>
 <% end %>
